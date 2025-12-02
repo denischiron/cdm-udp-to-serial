@@ -1,2 +1,2 @@
 # cdm-to-serial
-Listen UDP Message and send to Arduino-board serial port
+Listen UDP Messages and send them to Arduino-board serial port
