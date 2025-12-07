@@ -4,9 +4,11 @@ const { SerialPort } = require('serialport')
 
 let portArduino;
 
+const DEFAULT_PORT = "COM6";
+
 /**************************************************/
 // UDP Params :
-const udpHost = "localhost";
+const udpHost = "0.0.0.0";
 const udpPort = 41235;
 /**************************************************/
 
@@ -73,7 +75,15 @@ setTimeout(
 			});
 		}
 		
-		console.log("port COM Arduino détecté", detectedCOMPort);
+		// Si aucun Arduino détecté, on prend le port par défaut :
+		if (! detectedCOMPort) {
+			detectedCOMPort = DEFAULT_PORT ;
+			console.log("port COM Arduino par défaut", detectedCOMPort);
+
+		}
+		else {
+			console.log("port COM Arduino détecté", detectedCOMPort);
+		}
 		
 		// Serial port
 		portArduino = new SerialPort({
